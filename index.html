@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" onmousemove = "redirect();">
+ <head>
+	<title>Air Charter Solutions Inc. </title>
+	<meta charset="UTF-8">
+	<link rel = "stylesheet" type = "text/css" href = "styles.css">
+
+ </head>
+ <body>
+
+	<header id = "h1">
+		<b><i>Air Charter Solutions</i></b>
+		<img src = "https://media.glassdoor.com/sqll/768181/air-charter-service-squarelogo-1468341561293.png" alt = "logo" height = "85" width = "85">
+	</header>
+
+	<nav>
+		<ul>
+			<li></li>
+			<li><a href = "index.html"> Home </a> </li>
+			<li></li>
+			<li><a href = "aboutus.html"> About Us </a> </li>
+			<li></li>
+			<li><a href = "detail.html"> Fleet </a> </li>
+			<li></li>
+			<li><a href = "gallery.html"> Gallery </a> </li>
+			<li></li>
+			<li><a href = "products.html"> Empty Legs </a> </li>
+			<li></li>
+			<li><a href = "signup.html"> Request a Quote </a> </li>
+			<li></li>
+			<li><a href = "contact.html"> Contact Us </a> </li>
+			<li></li>
+		</ul>
+	</nav>
+
+	<main id = "m1">
+	</main>
+        <div style = "font-size: 18pt; text-align: center; ">
+          <p id = "greeting"></p>
+        </div>
+
+        <script>
+            //Initial Variable Declarations
+            var greeting1 = "Hello, its even good to see you";
+            var greeting2 = "Hello, odd seeing you here";
+            //Get current Date & Time
+            var d   = new Date();
+            var val = d.getMinutes();
+
+            //Check if Odd or Even
+            if ( val % 2 == 0){ //EVEN VALUE
+              document.getElementById("greeting").innerHTML = greeting1;
+            } else { //ODD VALUE
+              document.getElementById("greeting").innerHTML = greeting2;
+            }
+        </script>
+
+        <link href="http://courses.cyber.usna.edu/SY306/docs/check.css" rel="stylesheet">
+        <script>
+          document.write('<div id="response"><a href="http://csmidn.academy.usna.edu:8888/?showsource=yes&doc=' + document.location + '">' +
+                     '<img src="http://courses.cyber.usna.edu/SY306/docs/check.py"' + 'alt="HTML Check" height="60" />' +
+                     '</a><div id="time"></div></div>');
+        </script>
+        <script src="http://courses.cyber.usna.edu/SY306/docs/time.js" ></script>
+
+ </body>
+</html>

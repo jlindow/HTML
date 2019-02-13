@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="">
+ <head>
+       <title>Air Charter Solutions Inc. </title>
+	     <link rel = "stylesheet" type = "text/css" href = "styles.css">
+       <meta charset="UTF-8">
+ </head>
+ <body>
+	<header id = "h1" >
+	     <b><i>Air Charter Solutions </i></b>
+	     <img src = "https://media.glassdoor.com/sqll/768181/air-charter-service-squarelogo-1468341561293.png" alt = "logo" height = "85" width = "85">
+	</header>
+
+	<nav>
+		<ul>
+			<li></li>
+			<li><a href = "index.html"> Home </a> </li>
+			<li></li>
+			<li><a href = "aboutus.html"> About Us </a> </li>
+			<li></li>
+			<li><a href = "detail.html"> Fleet </a> </li>
+			<li></li>
+			<li><a href = "gallery.html"> Gallery </a> </li>
+			<li></li>
+			<li><a href = "products.html"> Empty Legs </a> </li>
+			<li></li>
+			<li><a href = "signup.html"> Request a Quote </a> </li>
+			<li></li>
+			<li><a href = "contact.html"> Contact Us </a> </li>
+			<li></li>
+		</ul>
+	</nav>
+
+	<main id = "m3">
+		<section id = "sect1">
+			<div class = "style1">
+				<h3><i> - Empty Legs -</i></h3>
+				<p> Click the aircraft in the table to view details!</p>
+			</div>
+		</section>
+
+		<article id = "art3">
+			<div class = "products">
+        <table id = "table1"> <!-- Source = "https://www.w3schools.com/html/html_tables.asp" -->
+
+		        <caption style = "caption-side: bottom;"> New Legs Coming Soon! </caption>
+
+        		<thead>
+        			<tr>
+        			<th colspan = "2" style = "text-align: center;"> Leg (From - To)  </th>
+        			<th> Aircraft </th>
+        			<th> Date </th>
+        			<th> Time </th>
+        			<th> Price </th>
+              <th> </th>
+        			</tr>
+        		</thead>
+
+        		<tr>
+        			<td> Annapolis (KANP) </td>
+        			<td> New York (KJFK) </td>
+        			<td><a href = "detail.html"> Cessna Citation X </a></td>
+        			<td> 21 July 2019 </td>
+        			<td> 1730 </td>
+        			<td> $4,573.62 </td>
+              <td> <input id = "1"  name = "KANP_KJFK" type = "button" value = "Add to Cart" onclick = addToCart(id)>
+              </td>
+        		</tr>
+
+        		<tr>
+        			<td> Washington, DC (KDCA) </td>
+        			<td> Hong Kong (VHHH) </td>
+        			<td><a href = "detail.html"> Global 7000 </a></td>
+        			<td> 26 May 2019 </td>
+        			<td> 1415 </td>
+        			<td> $95,270.20 </td>
+              <td> <input id = "2"  name = "KDCA_VHHH" type = "button" value = "Add to Cart" onclick = addToCart(id)>
+              </td>
+        		</tr>
+
+        		<tr>
+        			<td> Memphis, TN (KMEM) </td>
+        			<td> Munich, Germany (EDDM) </td>
+        			<td><a href = "detail.html"> Gulfstream G450 </a></td>
+        			<td> 18 March 2019 </td>
+        			<td> 1730 </td>
+        			<td> $17,653.15 </td>
+              <td> <input id = "3"  name = "KMEM_EDDM" type = "button" value = "Add to Cart" onclick = addToCart(id)>
+              </td>
+        		</tr>
+
+
+        		<tr>
+        			<td> Annapolis (KANP) </td>
+        			<td> San Diego (KSAN) </td>
+        			<td><a href = "detail.html"> Pilatus PC24 </a></td>
+        			<td> 03 March 2019 </td>
+        			<td> 0725 </td>
+        			<td> $9,782.62 </td>
+              <td> <input id = "4" name = "KANP_KSAN" type = "button" value = "Add to Cart" onclick = addToCart(id)>
+              </td>
+        		</tr>
+
+	      </table>
+
+			</div>
+
+      <div class = "buttons">
+      <input id = "clear"  name = "clear" type = "button" value = "Empty Cart" onclick = emptyCart()>
+      <input id = "view"  name = "view" type = "button" value = "View Cart" onclick = viewCart()>
+      </div>
+      <div>
+	      <p id = "TITLE"> <!--Place Holder-->
+	      </p>
+	      <table id = "CART"> <!-- ALso a Place Holder -->
+	      </table>
+      </div>
+			<img id = "invis" src = "https://i.ytimg.com/vi/oHg5SJYRHA0/hqdefault.jpg" alt = "fake image">
+
+		</article>
+
+	</main>
+
+        <script>
+          var shoppingCart = [];
+
+	  window.onload = checkCart; //EC #4
+	  function checkCart() {
+		  for(i = 1; i < 5; i++ ) {
+		  	name = sessionStorage.getItem(i); //Check Session Storage for Every Product ID
+			if (name == "null") { //If an ID is found, make an object and add to shopping Cart
+			       //DO NOTHING
+			}
+			else { //Create a new product
+			   var product =
+				{
+				"productname": name ,
+				"tripID": i ,
+				"quantity": 1 ,
+				};
+			   shoppingCart.push(product); //Add this old product to the shopping cart
+			   document.getElementById("view").style.border = "5px solid blue"; //Let user know it is in cart
+			   console.log(shoppingCart); //Log it.
+			}
+		}
+	}
+
+
+
+          function addToCart(productID) {
+
+            var product = //Create a JSON object with two elements. THis object will be added to an array
+              {
+                     "productname": document.getElementById(productID).name ,
+                     "tripID": productID ,
+		     "quantity": 1
+
+              };
+
+	     sessionStorage.setItem(product.tripID, product.productname); //STORE PRODUCT LOCALLY
+
+	    if  (shoppingCart.length > 0) { //Verify cart not empty
+	    	for (i = 0; i < shoppingCart.length; i++) {
+
+		    if(shoppingCart[i].tripID == product.tripID){ //compare trip IDs to verify element not already in cart
+			    shoppingCart[i].quantity += 1; //IF SO UPDATE QUANTITY (EXTRA CREDIT #1
+			    alert("ITEM: " + product.productname + " QUANTITY IS NOW: " +  shoppingCart[i].quantity)
+			    console.log(shoppingCart); //LOG IT
+			    return(0);
+		    }
+	    	}
+	    }
+
+            shoppingCart.push(product); //Add product to shopping cart
+            console.log(product);
+	    console.log(shoppingCart);
+            alert("The trip: " + product.productname + " was added to cart. Continue shopping or press ORDER to submit requests");
+
+	    document.getElementById("view").style.border = "5px solid blue"; //EXTRA CREDIT #3
+
+	  }
+
+          function viewCart(){
+
+		if(shoppingCart.length == 0) {  //Cart is empty if length is 0
+			alert("Cart Empty! Select Legs to book!");
+			return(0);
+		}
+
+		document.getElementById("TITLE").innerHTML = "Current Cart: ";
+		var table = document.getElementById("CART"); //GO GET A TABLE
+
+		for (i = 0; i < shoppingCart.length; i++) {
+
+			name = shoppingCart[i].productname; //Get name and ID of item
+			id   = shoppingCart[i].tripID;
+			quantity = shoppingCart[i].quantity;
+
+		 	var row = document.createElement("TR"); //MAKE A ROW
+			row.setAttribute("id", "row");
+			table.appendChild(row); //ADD ROW TO TABLE
+
+
+			var item = document.createElement("TD"); //MAKE A DATA CELL
+			var val  = document.createTextNode(name + " Quantity: " + quantity); //ADD THE NAME TO THAT CELL
+			item.appendChild(val);
+			row.appendChild(item);  //ADD CELL TO TABLE
+
+
+		}
+
+
+          }
+
+          function emptyCart(){
+
+
+		for( i = 0; i <= shoppingCart.length; i++) {
+			shoppingCart.pop() //Delete Everything
+		}
+
+		alert("The cart has been emptied"); //Tell the user
+		console.log(shoppingCart);
+    document.getElementById("CART").innerHTML = "";
+    for(i = 1; i < 5; i++ ) {
+      name = sessionStorage.removeItem(i); //Check Session Storage for Every Product ID
+    }
+
+		document.getElementById("view").style.border = "1px solid black"; //EXTRA CREDIT #3
+
+          }
+        </script>
+
+        <link href="http://courses.cyber.usna.edu/SY306/docs/check.css" rel="stylesheet">
+        <script>
+          document.write('<div id="response"><a href="http://csmidn.academy.usna.edu:8888/?showsource=yes&doc=' + document.location + '">' +
+                     '<img src="http://courses.cyber.usna.edu/SY306/docs/check.py"' + 'alt="HTML Check" height="60" />' +
+                     '</a><div id="time"></div></div>');
+        </script>
+        <script src="http://courses.cyber.usna.edu/SY306/docs/time.js" ></script>
+ </body>
+</html>
